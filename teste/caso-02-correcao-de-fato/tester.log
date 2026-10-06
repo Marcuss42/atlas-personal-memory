@@ -1,0 +1,46 @@
+======================================================================
+TESTER - ATLAS
+Caso                : 03
+Diretório            : C:\Users\Marcus Paulo\Documents\teste marcus\perosonal-persistent-memory-ai\teste\caso-03-correcao-de-fato
+Fatos aprendizado    : 10
+Testes               : 5
+Avaliador            : openai/gpt-oss-20b:nitro
+Log                  : C:\Users\Marcus Paulo\Documents\teste marcus\perosonal-persistent-memory-ai\teste\caso-03-correcao-de-fato\tester.log
+======================================================================
+
+Aprendizado concluído: 10/10 fatos em 22.10s.
+Erros no aprendizado: 0
+
+======================================================================
+RESULTADO FINAL
+======================================================================
+Total              : 5
+Avaliados          : 5
+CERTOS             : 5
+PARCIAIS           : 0
+ERRADOS            : 0
+Falhas avaliador   : 0
+Falhas execução    : 0
+
+% CERTOS           : 100.00%
+% PARCIAIS         : 0.00%
+% ERRADOS          : 0.00%
+
+ANÁLISE DOS ERRADOS NO BANCO
+  Entidade ausente : 0
+  Predicate ausente: 0
+  Valor ausente    : 0
+  Valor presente   : 0
+
+ANÁLISE DOS PARCIAIS NO BANCO
+  Entidade ausente : 0
+  Predicate ausente: 0
+  Valor ausente    : 0
+  Valor presente   : 0
+
+INTERPRETAÇÃO DOS ERRADOS
+  Conhecimento não encontrado no banco: 0
+  Conhecimento presente no banco       : 0
+
+Tempo teste       : 5.15s
+======================================================================

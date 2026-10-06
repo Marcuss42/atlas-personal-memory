@@ -1,0 +1,230 @@
+# MEMÓRIA
+
+A memória de longo prazo armazena informações relevantes extraídas das conversas.
+
+A memória deve ser genérica e não depender de categorias fixas.
+
+O sistema deve permitir armazenar fatos, preferências, instruções, eventos, decisões, entidades, relações e outras informações relevantes.
+
+# EXTRAÇÃO
+
+Ao receber uma mensagem:
+
+- Preserve sempre a mensagem original.
+- Avalie se existe informação relevante para memória.
+- Extraia somente informações sustentadas pela mensagem atual.
+- Não invente informações.
+- Não transforme toda mensagem em memória.
+- Saudações, perguntas e conversas triviais normalmente não geram memória.
+- Extraia somente o conhecimento novo, atualizado ou explicitamente confirmado.
+- Não repita conhecimento antigo apenas porque ele aparece no contexto recente.
+
+# ENTIDADES
+
+Uma entidade representa algo que precisa ser identificado separadamente para representar o conhecimento.
+
+Crie uma entidade somente quando ela for necessária para:
+
+- ser sujeito de uma memória;
+- ser sujeito de uma relação;
+- ser objeto de uma relação;
+- receber ou fornecer um alias.
+
+Não crie entidades para:
+
+- pronomes;
+- quantidades;
+- números;
+- atributos;
+- características;
+- categorias ou conceitos comuns usados apenas como valor de uma memória.
+
+Exemplo:
+
+"Matheus tem 5 gatos"
+
+Correto:
+
+Matheus = entidade
+quantidade_de_gatos = memória
+5 = valor
+
+Não crie "gatos" como entidade.
+
+# RELAÇÕES
+
+Quando uma informação conectar duas entidades, represente-a como relação.
+
+Exemplo:
+
+"Projeto A usa SQLite"
+
+Projeto A = entidade
+SQLite = entidade
+Projeto A --usa--> SQLite = relação
+
+Não armazene a mesma relação também como memória.
+
+Relações simétricas devem indicar explicitamente quando a relação vale nos dois sentidos.
+
+Exemplo:
+
+"Lucas e Matheus são amigos"
+
+Lucas --amigo↔--> Matheus
+
+# SELF
+
+"self" representa o usuário atual.
+
+"self" nunca deve ser criado como entidade.
+
+Exemplo:
+
+"Eu sou Marcus"
+
+Correto:
+
+self --nome--> Marcus
+
+Nesse caso, Marcus é um valor da memória de identidade, não uma nova entidade do usuário.
+
+Exemplo:
+
+"Eu tenho um amigo chamado Lucas"
+
+Correto:
+
+self --amigo↔--> Lucas
+
+# ORIGEM
+
+Toda memória estruturada deve possuir referência à mensagem ou ao trecho de conversa que originou a informação.
+
+Uma memória pode possuir:
+
+- ID da mensagem de origem.
+- Intervalo de mensagens de origem.
+- Data de criação.
+- Data da última atualização.
+
+A mensagem original deve permanecer disponível para consulta.
+
+A memória estruturada não substitui o conteúdo original.
+
+# CONTEXTO
+
+O contexto recente serve principalmente para resolver referências.
+
+Exemplos de referências:
+
+- ele;
+- ela;
+- isso;
+- aquilo;
+- esse;
+- essa;
+- aquele;
+- aquela;
+- sim;
+- não.
+
+Não copie informações antigas do contexto apenas porque elas estão presentes nele.
+
+Exemplo:
+
+Contexto:
+"Matheus tem 21 anos."
+
+Mensagem:
+"Lucas também é conhecido como Lu"
+
+Extraia somente a informação sobre Lucas e o alias Lu.
+
+Não reextraia:
+"Matheus tem 21 anos".
+
+# ATUALIZAÇÃO
+
+Quando uma nova informação estiver relacionada a uma memória existente:
+
+- Verifique se é a mesma informação.
+- Verifique se representa uma atualização.
+- Verifique se representa uma nova informação.
+- Verifique se existe contradição.
+
+Informações repetidas não devem gerar duplicações desnecessárias.
+
+Uma atualização legítima deve preservar o histórico da informação anterior.
+
+Exemplo:
+
+"Matheus tem 20 anos."
+
+Depois:
+
+"Matheus tem 21 anos."
+
+A memória atual deve representar 21, mantendo 20 no histórico.
+
+# CONFIANÇA
+
+Não trate uma informação extraída pelo LLM como verdadeira apenas porque o modelo a produziu.
+
+A memória deve ser baseada em evidências disponíveis nas mensagens armazenadas.
+
+Quando a interpretação não for suficientemente confiável:
+
+- não invente uma resolução;
+- não crie entidades arbitrárias;
+- não crie relações arbitrárias;
+- não registre como fato definitivo sem evidência suficiente.
+
+# ALIAS
+
+Um alias deve representar outra forma de identificar uma entidade existente.
+
+Exemplo:
+
+"Lucas também é conhecido como Lu"
+
+Lucas = entidade
+Lu = alias de Lucas
+
+O alias não deve criar uma nova entidade.
+
+Pronomes não devem ser persistidos como aliases.
+
+# RECUPERAÇÃO
+
+Ao responder uma pergunta:
+
+- Utilize o contexto recente para compreender a intenção.
+- Consulte a memória persistente quando necessário.
+- Priorize informações relacionadas às entidades e termos mencionados pelo usuário.
+- Considere a origem da informação.
+- Considere a validade temporal.
+- Não recupere informações de contextos diferentes apenas porque possuem palavras semelhantes.
+- Consultas estruturadas devem preferir relações e memórias diretamente relacionadas à entidade identificada.
+- Não use contexto recente como substituto da memória persistente quando a informação já deveria estar armazenada.
+
+# HISTÓRICO
+
+Memórias antigas não devem ser apagadas silenciosamente quando uma informação for atualizada.
+
+O sistema deve permitir recuperar:
+
+- O valor atual.
+- Valores anteriores.
+- A data de cada alteração.
+- A origem de cada informação.
+
+O histórico original das mensagens deve permanecer independente das memórias estruturadas.
+
+# PRINCÍPIO
+
+O LLM interpreta a conversa.
+
+O banco de dados armazena o conhecimento.
+
+A recuperação deve depender dos dados persistidos, e não apenas da capacidade do modelo de lembrar ou inferir informações pelo contexto.

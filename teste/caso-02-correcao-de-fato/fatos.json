@@ -1,0 +1,31 @@
+{
+  "aprendizado": [
+    [
+      "O Objeto-001 é azul.",
+      "O Objeto-001 era azul, mas agora é vermelho."
+    ],
+    [
+      "O Servidor-002 usa a porta 4002.",
+      "O Servidor-002 usava a porta 4002, mas agora usa a porta 4202."
+    ],
+    [
+      "O Projeto-003 usa Java.",
+      "O Projeto-003 usava Java, mas agora usa Python."
+    ],
+    [
+      "A Pessoa-004 tem 28 anos.",
+      "A Pessoa-004 tinha 28 anos, mas agora tem 29 anos."
+    ],
+    [
+      "O Projeto-005 usa Redis.",
+      "O Projeto-005 usava Redis, mas agora usa PostgreSQL."
+    ]
+  ],
+  "testes": {
+    "Qual é a cor atual do Objeto-001?": "O Objeto-001 agora é vermelho.",
+    "Qual é a porta atual do Servidor-002?": "O Servidor-002 agora usa a porta 4202.",
+    "Qual tecnologia o Projeto-003 usa atualmente?": "O Projeto-003 agora usa Python.",
+    "Qual é a idade atual da Pessoa-004?": "A Pessoa-004 agora tem 29 anos.",
+    "Qual tecnologia o Projeto-005 usa atualmente?": "O Projeto-005 agora usa PostgreSQL."
+  }
+}

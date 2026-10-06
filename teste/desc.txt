@@ -1,0 +1,33 @@
+CASO 01 — EXTRAÇÃO MISTA
+
+Foi encontrado um problema na normalização das relações. 
+O modelo podia criar uma relação referenciando uma entidade que não estava presente na lista de entidades, causando erro durante o salvamento. 
+Foi corrigido garantindo a criação das entidades referenciadas antes da persistência.
+
+
+CASO 02 — CORREÇÃO DE FATO
+
+Foi encontrado um problema na propagação do campo "resolution". As correções eram extraídas, mas a resolução não chegava corretamente à persistência, 
+fazendo com que os valores antigo e novo permanecessem como atuais.
+
+Após a correção, fatos e relações passaram a manter o valor antigo como histórico e o novo como atual.
+
+Estruturalmente, ainda existe um problema no query router para consultas baseadas em relações, que interpreta incorretamente perguntas como "Qual tecnologia o Projeto-003 usa?".
+
+
+CASO 03 — CONTEXTO / CONVERSA
+
+Não foi identificado um erro funcional direto durante o teste.
+
+Porém, existe um problema estrutural: mensagens de execuções e testes anteriores continuam presentes no contexto de curto prazo da mesma conversa. 
+Isso pode fazer com que mensagens antigas influenciem respostas futuras mesmo quando não deveriam fazer parte do contexto relevante.
+
+
+CASO 04 — CONSULTA INVERSA
+
+As consultas foram respondidas corretamente nos testes, porém foi identificado um problema estrutural no Query Router.
+
+Perguntas como "Qual servidor usa a porta 6811?" são interpretadas incorretamente, colocando "porta" como entidade e "6811" como predicado.
+
+A resposta correta é recuperada porque, ao não conseguir resolver a entidade, o executor utiliza o FTS como fallback. 
+Portanto, o teste passa funcionalmente, mas o plano de consulta gerado pelo router está semanticamente incorreto.

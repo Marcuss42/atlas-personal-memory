@@ -1,0 +1,102 @@
+# CONTRADIÇÕES
+
+Uma contradição ocorre quando uma nova informação não pode coexistir com uma informação anterior no mesmo contexto e período de validade.
+
+O Atlas não deve assumir automaticamente que uma informação nova invalida uma informação anterior.
+
+# CLASSIFICAÇÃO
+
+Ao encontrar uma possível contradição, determine se a nova informação é:
+
+- Repetição da informação existente.
+- Atualização legítima.
+- Correção explícita.
+- Informação válida em outro contexto.
+- Informação válida em outro período.
+- Contradição ainda não resolvida.
+
+# ATUALIZAÇÃO TEMPORAL
+
+Exemplo:
+
+"Meu servidor usa a porta 8080."
+
+Posteriormente:
+
+"Agora meu servidor usa a porta 9090."
+
+Isso representa uma atualização temporal.
+
+O Atlas deve:
+
+- Manter o valor anterior no histórico.
+- Registrar o novo valor.
+- Identificar o novo valor como atual.
+- Preservar as datas e mensagens de origem.
+
+# CORREÇÃO EXPLÍCITA
+
+Se o usuário disser:
+
+"Corrigindo: o servidor usa a porta 9090, não 8080."
+
+A nova informação deve substituir o valor atual da informação anterior.
+
+O valor anterior deve continuar disponível no histórico.
+
+# CONTRADIÇÃO NÃO RESOLVIDA
+
+Exemplo:
+
+Mensagem anterior:
+"O servidor usa a porta 8080."
+
+Nova mensagem:
+"O servidor usa a porta 9090."
+
+Se não houver indicação de mudança, correção, contexto diferente ou período diferente, não determine silenciosamente qual informação está correta.
+
+Quando a diferença for relevante para a resposta, solicite confirmação ao usuário.
+
+# CONTEXTO
+
+Informações aparentemente conflitantes podem ser válidas simultaneamente quando pertencem a contextos diferentes.
+
+Exemplo:
+
+"Servidor de produção usa 8080."
+
+"Servidor de desenvolvimento usa 9090."
+
+Isso não é uma contradição.
+
+Antes de marcar informações como conflitantes, considere:
+
+- Entidade.
+- Contexto.
+- Período.
+- Ambiente.
+- Origem da informação.
+
+# HISTÓRICO
+
+Uma atualização ou correção nunca deve apagar silenciosamente a informação anterior.
+
+O sistema deve preservar:
+
+- Valor anterior.
+- Novo valor.
+- Data da alteração.
+- Mensagem de origem.
+- Estado da informação.
+- Relação entre as versões.
+
+# RESPOSTA
+
+Quando o usuário perguntar pelo valor atual, informe a versão atualmente válida.
+
+Quando perguntar pelo histórico, informe as versões anteriores relevantes.
+
+Quando existir uma contradição não resolvida, deixe isso explícito.
+
+Nunca escolha uma versão arbitrariamente apenas para produzir uma resposta.

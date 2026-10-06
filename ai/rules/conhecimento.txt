@@ -1,0 +1,150 @@
+# CONHECIMENTO
+
+O conhecimento armazenado pelo Atlas deve representar informações relevantes identificadas nas conversas.
+
+O conhecimento não deve depender de categorias fixas.
+
+O sistema deve permitir representar diferentes tipos de informação conforme a necessidade identificada.
+
+# ENTIDADES
+
+Uma entidade representa algo identificável mencionado pelo usuário ou presente no conhecimento.
+
+Exemplos:
+
+* Pessoa.
+* Projeto.
+* Aplicação.
+* Servidor.
+* Banco de dados.
+* Arquivo.
+* Empresa.
+* Tecnologia.
+* Serviço.
+* Dispositivo.
+
+Essa lista não é fechada.
+
+O sistema deve permitir representar entidades de outros tipos conforme necessário.
+
+Cada entidade deve possuir um identificador estável.
+
+# ALIASES
+
+Diferentes nomes podem representar a mesma entidade.
+
+Exemplos:
+
+* "meu PC"
+* "meu computador"
+* "máquina principal"
+
+Podem representar a mesma entidade quando houver evidências suficientes.
+
+Não associe automaticamente dois nomes à mesma entidade apenas porque parecem semelhantes.
+
+Quando a associação for incerta, mantenha as informações separadas até que exista evidência suficiente ou solicite esclarecimento quando necessário.
+
+# RELAÇÕES
+
+Entidades podem possuir relações entre si.
+
+Exemplos:
+
+* usa
+* depende de
+* pertence a
+* foi criado por
+* utiliza
+* contém
+* executa
+
+Essa lista não é fechada.
+
+O sistema deve permitir relações diferentes conforme o conhecimento identificado.
+
+Toda relação estruturada deve possuir evidência de origem.
+
+# FATOS
+
+Um fato representa uma informação atribuída a uma entidade ou a um conjunto de entidades.
+
+Exemplo:
+
+"Atlas utiliza SQLite."
+
+Possível representação:
+
+* Entidade: Atlas
+* Relação: utiliza
+* Valor: SQLite
+
+Outro exemplo:
+
+"O projeto X utiliza Python."
+
+Possível representação:
+
+* Entidade: projeto X
+* Relação: utiliza
+* Valor: Python
+
+O formato de representação deve permanecer flexível e não deve depender de um conjunto fixo de atributos.
+
+# CONTEXTO
+
+Um conhecimento deve ser associado ao contexto necessário para evitar ambiguidades.
+
+Se duas entidades possuem informações diferentes para a mesma propriedade, relação ou configuração, o sistema deve manter os contextos separados.
+
+Exemplo:
+
+Projeto A → porta 8080
+Projeto B → porta 9090
+
+Não considerar que existe uma única "porta configurada" sem identificar a entidade ou o contexto correspondente.
+
+# EVIDÊNCIA
+
+Todo conhecimento estruturado deve possuir evidência rastreável.
+
+A evidência deve permitir consultar a mensagem ou trecho de conversa que originou a informação.
+
+O conhecimento estruturado não deve ser tratado como evidência independente da mensagem original.
+
+A mensagem original deve permanecer preservada mesmo quando o conhecimento for atualizado, corrigido ou substituído.
+
+# ATUALIZAÇÕES
+
+Quando uma nova informação estiver relacionada a conhecimento existente:
+
+* Identifique a entidade correta.
+* Verifique se o conhecimento é equivalente.
+* Verifique se representa uma atualização.
+* Verifique se representa uma nova relação ou informação.
+* Verifique se existe conflito.
+
+Não sobrescreva silenciosamente conhecimento anterior.
+
+Quando houver atualização, preserve a informação anterior como histórico quando aplicável.
+
+# CORREÇÕES
+
+Quando o usuário corrigir explicitamente uma informação:
+
+* Identifique a informação anterior.
+* Registre a nova informação.
+* Preserve o histórico anterior.
+* Associe a correção à mensagem que a originou.
+
+A correção não deve apagar nem alterar a mensagem original.
+
+# PRECISÃO
+
+Não crie relações ou entidades apenas por inferência fraca.
+
+Não associe informações diferentes somente porque possuem nomes semelhantes.
+
+Não transforme uma informação implícita em conhecimento estruturado sem evidência suficiente.
+
+Quando não houver evidência suficiente para determinar a entidade, relação ou contexto correto, mantenha a informação separada ou solicite esclarecimento quando isso for necessário para evitar uma resposta incorreta.

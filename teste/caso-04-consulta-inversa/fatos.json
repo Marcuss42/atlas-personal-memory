@@ -1,0 +1,26 @@
+{
+  "aprendizado": [
+    [
+      "O Servidor-001 usa a porta 6808."
+    ],
+    [
+      "O Servidor-002 usa a porta 6809."
+    ],
+    [
+      "O Servidor-003 usa a porta 6810."
+    ],
+    [
+      "O Servidor-004 usa a porta 6811."
+    ],
+    [
+      "O Servidor-005 usa a porta 6812."
+    ]
+  ],
+  "testes": {
+    "Qual servidor usa a porta 6808?": "O Servidor-001 usa a porta 6808.",
+    "Qual servidor usa a porta 6809?": "O Servidor-002 usa a porta 6809.",
+    "Qual servidor usa a porta 6810?": "O Servidor-003 usa a porta 6810.",
+    "Qual servidor usa a porta 6811?": "O Servidor-004 usa a porta 6811.",
+    "Qual servidor usa a porta 6812?": "O Servidor-005 usa a porta 6812."
+  }
+}

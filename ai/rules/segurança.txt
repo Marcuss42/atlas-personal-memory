@@ -1,0 +1,95 @@
+# SEGURANÇA
+
+O Atlas pode lidar com informações sensíveis fornecidas pelo usuário.
+
+Informações como senhas, tokens, chaves privadas e credenciais não devem ser tratadas como memória comum.
+
+# SEGREDOS
+
+Um segredo deve ser armazenado separadamente da memória persistente comum.
+
+O sistema deve permitir que o usuário marque explicitamente uma informação como segredo.
+
+Informações identificadas como sensíveis também podem ser direcionadas para o armazenamento protegido quando houver evidência suficiente.
+
+# COFRE
+
+Os segredos devem ser armazenados em um cofre separado.
+
+Os valores dos segredos devem permanecer criptografados em repouso.
+
+O acesso ao conteúdo do cofre deve exigir desbloqueio explícito.
+
+# PROTEÇÃO
+
+A senha do cofre não deve ser utilizada diretamente como chave de criptografia.
+
+O sistema deve utilizar uma função de derivação de chave, como Argon2id, para derivar uma chave a partir da senha.
+
+Os parâmetros necessários para a derivação devem ser armazenados de forma segura.
+
+A senha do cofre nunca deve ser armazenada em texto puro.
+
+# CRIPTOGRAFIA
+
+Os valores dos segredos devem ser armazenados utilizando criptografia autenticada.
+
+Algoritmos apropriados incluem:
+
+- AES-GCM.
+- ChaCha20-Poly1305.
+
+Os segredos precisam permanecer recuperáveis em seu valor original quando o cofre for desbloqueado.
+
+Segredos não devem ser armazenados apenas como hashes.
+
+# ACESSO
+
+Ao solicitar um segredo protegido:
+
+- Verifique se o cofre está desbloqueado.
+- Caso esteja bloqueado, solicite a senha do cofre.
+- Derive a chave novamente.
+- Valide a senha.
+- Desbloqueie o cofre.
+- Recupere somente o segredo necessário.
+
+O sistema não deve expor outros segredos desnecessariamente.
+
+# LLM
+
+Segredos não devem ser enviados ao LLM por padrão.
+
+Um segredo só deve ser incluído no contexto do modelo quando isso for realmente necessário para executar uma tarefa autorizada.
+
+A existência ou associação de um segredo pode ser registrada sem armazenar seu valor na memória comum.
+
+# LOGS
+
+Senhas, tokens, chaves e outros valores sensíveis nunca devem aparecer em logs.
+
+Mensagens de erro também não devem expor valores protegidos.
+
+# CÓDIGO
+
+O código-fonte público não deve conter:
+
+- Senhas reais.
+- Tokens reais.
+- Chaves privadas.
+- Credenciais.
+- Chaves mestras fixas.
+- Dados necessários para descriptografar um cofre real.
+
+Ter acesso ao código-fonte não deve ser suficiente para recuperar os segredos armazenados.
+
+# SEPARAÇÃO
+
+O sistema deve manter separadas:
+
+- Memória comum.
+- Histórico de mensagens.
+- Instruções persistentes.
+- Cofre de segredos.
+
+Um segredo armazenado no cofre não deve aparecer em buscas normais da memória.

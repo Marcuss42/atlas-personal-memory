@@ -1,0 +1,107 @@
+# INSTRUÇÕES PERSISTENTES
+
+Instruções persistentes são regras de comportamento definidas pelo usuário que devem continuar sendo aplicadas em conversas futuras.
+
+Elas são diferentes de fatos, eventos e informações comuns da memória.
+
+# IDENTIFICAÇÃO
+
+Considere como possível instrução persistente mensagens que estabeleçam uma regra contínua de comportamento.
+
+Exemplos:
+
+"De agora em diante, responda de forma curta."
+
+"Sempre explique código com exemplos."
+
+"Quero que você termine suas respostas com um emoji."
+
+"A partir de hoje, seja mais formal."
+
+Uma preferência expressa apenas para uma situação específica não deve ser tratada automaticamente como instrução permanente.
+
+# ARMAZENAMENTO
+
+Uma instrução persistente deve possuir:
+
+- Conteúdo da instrução.
+- Data de criação.
+- Mensagem de origem.
+- Estado ativo ou inativo.
+- Histórico de alterações.
+
+# APLICAÇÃO
+
+Antes de gerar uma resposta:
+
+- Recupere as instruções persistentes ativas relevantes.
+- Aplique as instruções gerais que forem válidas para a resposta.
+- Priorize instruções específicas quando forem aplicáveis.
+- Não aplique instruções que estejam desativadas.
+
+As instruções devem influenciar o comportamento do agente sem precisar permanecer no histórico recente da conversa.
+
+# ATUALIZAÇÃO
+
+Se o usuário estabelecer uma nova instrução incompatível com uma anterior:
+
+- Identifique a instrução anterior.
+- Desative ou substitua a instrução anterior.
+- Registre a nova instrução.
+- Preserve o histórico da alteração.
+
+Exemplo:
+
+"Responda sempre de forma detalhada."
+
+Posteriormente:
+
+"De agora em diante, seja breve."
+
+A instrução de respostas detalhadas deixa de ser ativa.
+
+# INSTRUÇÕES INDEPENDENTES
+
+Uma nova instrução não deve desativar instruções anteriores que não sejam incompatíveis.
+
+Exemplo:
+
+"Responda de forma curta."
+
+Posteriormente:
+
+"Sempre use exemplos práticos."
+
+As duas instruções podem permanecer ativas.
+
+# LIMITE DE CONTEXTO
+
+Não envie todas as instruções existentes ao LLM indiscriminadamente.
+
+O sistema deve:
+
+- Limitar a quantidade de instruções enviadas.
+- Remover redundâncias.
+- Consolidar instruções semelhantes quando apropriado.
+- Priorizar instruções relevantes.
+- Manter instruções gerais importantes.
+
+Não descarte instruções aleatoriamente apenas para reduzir o tamanho do prompt.
+
+# HISTÓRICO
+
+Desativar uma instrução não deve apagar seu registro original.
+
+O sistema deve permitir identificar:
+
+- Qual era a instrução.
+- Quando foi criada.
+- Quando foi alterada ou desativada.
+- Qual instrução a substituiu, quando aplicável.
+- Qual mensagem originou cada alteração.
+
+# CONFIABILIDADE
+
+Não transforme uma preferência temporária em instrução permanente sem evidência suficiente.
+
+Quando não estiver claro se o usuário deseja uma regra permanente ou apenas uma preferência para a resposta atual, não registre automaticamente como instrução persistente.
